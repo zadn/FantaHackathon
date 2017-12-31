@@ -1,0 +1,10 @@
+C:\Fantacode-Projects\FantaHackathon\obj\Debug\netcoreapp2.0\FantaHackathon.csproj.CoreCompileInputs.cache
+C:\Fantacode-Projects\FantaHackathon\obj\Debug\netcoreapp2.0\FantaHackathon.AssemblyInfoInputs.cache
+C:\Fantacode-Projects\FantaHackathon\obj\Debug\netcoreapp2.0\FantaHackathon.AssemblyInfo.cs
+C:\Fantacode-Projects\FantaHackathon\bin\Debug\netcoreapp2.0\FantaHackathon.deps.json
+C:\Fantacode-Projects\FantaHackathon\bin\Debug\netcoreapp2.0\FantaHackathon.runtimeconfig.json
+C:\Fantacode-Projects\FantaHackathon\bin\Debug\netcoreapp2.0\FantaHackathon.runtimeconfig.dev.json
+C:\Fantacode-Projects\FantaHackathon\bin\Debug\netcoreapp2.0\FantaHackathon.dll
+C:\Fantacode-Projects\FantaHackathon\bin\Debug\netcoreapp2.0\FantaHackathon.pdb
+C:\Fantacode-Projects\FantaHackathon\obj\Debug\netcoreapp2.0\FantaHackathon.dll
+C:\Fantacode-Projects\FantaHackathon\obj\Debug\netcoreapp2.0\FantaHackathon.pdb
