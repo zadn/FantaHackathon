@@ -27,6 +27,7 @@ namespace FantaHackathon
         {
             services.AddMvc();
             services.AddTransient<IAccidentRepository ,AccidentRepository>();
+            services.AddTransient<IPedestrianRepository ,PedestrianRepository>();
             
         }
 
@@ -37,7 +38,6 @@ namespace FantaHackathon
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
         }
     }
