@@ -19,7 +19,10 @@ namespace FantaHackathon.Controllers
 
         // GET api/Accident
         [HttpGet]
-        public IEnumerable<Accident> Get() => _accidentRepository.GetAll();
+        // public async Task<String> placename(){
+        //     return await _accidentRepository.GetPlaceName(11.25,75.78);
+        // }
+         public IEnumerable<Accident> Get() => _accidentRepository.GetAll();
         
 
         // GET api/Accident/5
@@ -35,10 +38,10 @@ namespace FantaHackathon.Controllers
 
         // POST api/Accident
         [HttpPost]
-        public void Post([FromBody]Accident accdnt)
+        public async Task Post([FromBody]Accident accdnt)
         {
             if (ModelState.IsValid)
-                _accidentRepository.Add(accdnt);
+                await _accidentRepository.Add(accdnt);
         }
 
         // PUT api/Accident/5

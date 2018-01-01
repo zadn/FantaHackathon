@@ -15,6 +15,7 @@ namespace FantaHackathon.Model
         public float Age { get; set; }
         public String Location { get; set; }
         public String Description { get; set; }
+        public int Verified { get; set; }
 
 
 

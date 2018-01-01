@@ -1,20 +1,62 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Dapper;
 using FantaHackathon.Interface;
 using FantaHackathon.Model;
-
+using Newtonsoft.Json;
+using static FantaHackathon.ResultFromGoogle.GoogleResult;
 
 namespace FantaHackathon.Repository
 {
-    public class AccidentRepository : IAccidentRepository {
+    public class AccidentRepository : IAccidentRepository
+    {
 
         private string connectionString;
+
+        private string _googleBaseUrl;
+
+
         public AccidentRepository()
         {
+
             connectionString = @"Server=localhost;Database=FcdOne;Trusted_Connection=true;";
+            _googleBaseUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
+        }
+
+        public async Task<String> GetPlaceName(double lat, double lon)
+        {
+            var client = new HttpClient();
+
+            var response = await client.GetAsync(_googleBaseUrl + lat + "," + lon + "&key=AIzaSyBVKoHudUgMEwgt3mfNLgYUtEqSesNw8EU");
+
+            //some logic
+            var content = await response.Content.ReadAsStringAsync();
+            var responseObject = JsonConvert.DeserializeObject<RootObject>(content);
+
+            
+            var firstResult = responseObject.results.FirstOrDefault();
+
+            if(firstResult != null) {
+                AddressComponent addressComponent = firstResult.address_components[2];
+                string longName = addressComponent.long_name;
+                return longName;                
+            }
+            else return null;
+
+            // foreach (var singleResult in responseObject.results)
+            // {
+            //     var location = singleResult.geometry.location;
+            //     var latitude = location.lat;
+            //     var longitude = location.lng;
+            //     // Do whatever you want with them.
+            //     Console.WriteLine(singleResult);
+            // }
+
         }
 
         public IDbConnection GetConnection()
@@ -32,8 +74,9 @@ namespace FantaHackathon.Repository
             }
         }
 
-        public void Add(Accident item)
+        public async Task Add(Accident item)
         {
+            item.Location= await this.GetPlaceName(11.25,75.78);
             using (IDbConnection dbConnection = GetConnection())
             {
                 string sQuery = @"INSERT INTO AccidentTable (Lplate,Longitude, 
@@ -52,7 +95,7 @@ namespace FantaHackathon.Repository
                 string sQuery = "Select * from AccidentTable where Todoid = @id ";
                 dbConnection.Open();
                 List<Accident> todos = dbConnection.Query<Accident>(sQuery, new { id = item }).ToList();
-                
+
                 return todos.FirstOrDefault();
             }
         }
@@ -87,7 +130,7 @@ namespace FantaHackathon.Repository
                 string sQuery = "delete from AccidentTable WHERE Id = @id";
                 dbConnection.Open();
                 List<Accident> accdnt = dbConnection.Query<Accident>(sQuery, new { id = item }).ToList();
-                
+
                 return accdnt.FirstOrDefault();
             }
         }
