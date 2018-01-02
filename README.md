@@ -4,7 +4,7 @@ This is the API for Accident.
 
 ### 1. api/Accident (GET)
 
-Get the list of all accident.
+Get the list of all accidents.
 
 #### Example Response
 ```json
@@ -13,12 +13,9 @@ Get the list of all accident.
         "id": 3,
         "lplate": "vbmmmm",
         "date": "2018-01-01T08:19:49.473",
-        "longitude": 64.66,
-        "latitude": 34.44,
         "name": "asdfsdf",
         "age": 5,
-        "location": "Palayam",
-        "description": "````",
+        "description": "asdff",
         "verified": 0
     }
 ]
@@ -32,13 +29,12 @@ This endpoint can be used to add an accident.
 ```json
 
    {
-        "Lplate": "vbmmmm",
-        "Longitude": 64.66,
-        "Latitude": 34.44,
+        "Lplate": "tttttttttt",
+        "Date": "2018-01-01T08:19:49.473",
         "Name": "asdfsdf",
         "Age": 5,
-        "Location": "Palayam",
-        "Description": "````"
+        "Description": "asdff",
+        "Verified": 0
     }
 
 ```
@@ -50,7 +46,7 @@ This endpoint can be used to add suppports to a particular event.
 ```json
 
    {   	
-        "verified": 1
+        "Verified": 1
     }
 
 
