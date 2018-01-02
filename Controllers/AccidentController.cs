@@ -24,6 +24,8 @@ namespace FantaHackathon.Controllers
         // }
          public IEnumerable<Accident> Get() => _accidentRepository.GetAll();
         
+        [HttpGet("All")]
+         public IEnumerable<Accident> GetNear() => _accidentRepository.GetNearBy(10.842308, 76.030487);
 
         // GET api/Accident/5
         [HttpGet("{id}")]

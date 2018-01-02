@@ -38,13 +38,14 @@ namespace FantaHackathon.Repository
             var content = await response.Content.ReadAsStringAsync();
             var responseObject = JsonConvert.DeserializeObject<RootObject>(content);
 
-            
+
             var firstResult = responseObject.results.FirstOrDefault();
 
-            if(firstResult != null) {
+            if (firstResult != null)
+            {
                 AddressComponent addressComponent = firstResult.address_components[2];
                 string longName = addressComponent.long_name;
-                return longName;                
+                return longName;
             }
             else return null;
 
@@ -76,7 +77,9 @@ namespace FantaHackathon.Repository
 
         public async Task Add(Accident item)
         {
-            item.Location= await this.GetPlaceName(11.25,75.78);
+            item.Location = await this.GetPlaceName(11.25, 75.78);
+            item.Latitude=11.25;
+            item.Longitude=75.78;
             using (IDbConnection dbConnection = GetConnection())
             {
                 string sQuery = @"INSERT INTO AccidentTable (Lplate,Longitude, 
@@ -88,6 +91,31 @@ namespace FantaHackathon.Repository
             }
         }
 
+        public IEnumerable<Accident> GetNearBy(double latitude, double longitude)
+        {
+            using (IDbConnection dbConnection = GetConnection())
+            {
+                string sQuery = @"DECLARE @InputLoc GEOGRAPHY;
+                                SET @InputLoc = GEOGRAPHY::Point(@latt,@lonn, 4326);
+                                SELECT * FROM (
+                                SELECT TOP (1000) [Id]
+                                    ,[Lplate]
+                                    ,[Date]
+                                    ,[Longitude]
+                                    ,[Latitude]
+                                    ,[Name]
+                                    ,[Age]
+                                    ,[Location]
+                                    ,[Description]
+                                    ,[Verified]
+                                    ,GEOGRAPHY::Point(Latitude, Longitude, 4326).STDistance(@InputLoc) AS distance
+                                FROM [FcdOne].[dbo].[AccidentTable]
+                                ) AS sel WHERE distance <= 100000
+                                ";
+                dbConnection.Open();
+                return dbConnection.Query<Accident>(sQuery, new {latt=latitude, lonn=longitude});
+            }
+        }
         public Accident Search(int item)
         {
             using (IDbConnection dbConnection = GetConnection())

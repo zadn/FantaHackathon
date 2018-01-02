@@ -16,14 +16,11 @@ namespace FantaHackathon.Repository{
         public PedestrianRepository()
         {
             connectionString = @"Server=localhost;Database=FcdOne;Trusted_Connection=true;";
-        }
-
-        
+        }        
         public IDbConnection GetConnection()
         {
             return new SqlConnection(connectionString);
-        }
-        
+        }        
         public IEnumerable<Accident> GetAll()
         {
             
@@ -36,7 +33,7 @@ namespace FantaHackathon.Repository{
 
         public async Task Add(Accident item)
         {
-            item.Lplate="0";
+            
             item.Location= await _accidentRepository.GetPlaceName(11.25,75.78);
             using (IDbConnection dbConnection = GetConnection())
             {
@@ -49,11 +46,6 @@ namespace FantaHackathon.Repository{
             }
         }
 
-
-
-
     }
-
-
 
 }
