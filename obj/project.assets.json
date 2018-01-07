@@ -12569,28 +12569,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ZIYAD\\.nuget\\packages\\": {},
+    "C:\\Users\\Ziyad Umar\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Fantacode-Projects\\FantaHackathon\\FantaHackathon.csproj",
+      "projectUniqueName": "c:\\GitHub Repositories\\FantaHackathon\\FantaHackathon.csproj",
       "projectName": "FantaHackathon",
-      "projectPath": "C:\\Fantacode-Projects\\FantaHackathon\\FantaHackathon.csproj",
-      "packagesPath": "C:\\Users\\ZIYAD\\.nuget\\packages\\",
-      "outputPath": "C:\\Fantacode-Projects\\FantaHackathon\\obj\\",
+      "projectPath": "c:\\GitHub Repositories\\FantaHackathon\\FantaHackathon.csproj",
+      "packagesPath": "C:\\Users\\Ziyad Umar\\.nuget\\packages\\",
+      "outputPath": "c:\\GitHub Repositories\\FantaHackathon\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ZIYAD\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Ziyad Umar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12607,18 +12609,18 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
           "Dapper": {
             "target": "Package",
-            "version": "1.50.4"
+            "version": "[1.50.4, )"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           }
         },
         "imports": [
