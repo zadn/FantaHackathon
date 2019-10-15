@@ -7,11 +7,16 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Data;
 
 namespace FantaHackathon
 {
     public class Program
     {
+        int i=0;
+        float pi=3.14;
+        string m="Just in case";
+        
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
